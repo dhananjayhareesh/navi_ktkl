@@ -5,8 +5,11 @@ import 'package:get/get.dart';
 import '../../../utils/navigator_key_utils.dart';
 
 class CustomSnackBar {
-  static showCustomSnackBar(
-      {required String title, required String message, Duration? duration}) {
+  static showCustomSnackBar({
+    required String title,
+    required String message,
+    Duration? duration,
+  }) {
     Get.snackbar(
       title,
       message,
@@ -14,18 +17,16 @@ class CustomSnackBar {
       margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
       colorText: Colors.white,
       backgroundColor: Colors.green,
-      icon: const Icon(
-        Icons.check_circle,
-        color: Colors.white,
-      ),
+      icon: const Icon(Icons.check_circle, color: Colors.white),
     );
   }
 
-  static showCustomErrorSnackBar(
-      {required String title,
-      required String message,
-      Color? color,
-      Duration? duration}) {
+  static showCustomErrorSnackBar({
+    required String title,
+    required String message,
+    Color? color,
+    Duration? duration,
+  }) {
     Get.snackbar(
       title,
       message,
@@ -33,18 +34,16 @@ class CustomSnackBar {
       margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
       colorText: Colors.white,
       backgroundColor: color ?? Colors.redAccent,
-      icon: const Icon(
-        Icons.error,
-        color: Colors.white,
-      ),
+      icon: const Icon(Icons.error, color: Colors.white),
     );
   }
 
-  static showCustomToast(
-      {String? title,
-      required String message,
-      Color? color,
-      Duration? duration}) {
+  static showCustomToast({
+    String? title,
+    required String message,
+    Color? color,
+    Duration? duration,
+  }) {
     Get.rawSnackbar(
       title: title,
       duration: duration ?? const Duration(seconds: 3),
@@ -58,11 +57,12 @@ class CustomSnackBar {
     );
   }
 
-  static showCustomErrorToast(
-      {String? title,
-      required String message,
-      Color? color,
-      Duration? duration}) {
+  static showCustomErrorToast({
+    String? title,
+    required String message,
+    Color? color,
+    Duration? duration,
+  }) {
     Get.rawSnackbar(
       title: title,
       duration: duration ?? const Duration(seconds: 3),
@@ -88,7 +88,7 @@ class CustomFlutterToast {
     );
   }
 
- static void iniMethod() {
+  static void iniMethod() {
     _fToast.init(NavigatorKeyHelper.getCurrentContext);
   }
 }

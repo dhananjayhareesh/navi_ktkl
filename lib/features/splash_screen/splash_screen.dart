@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:navitask/features/login_screen/login_screen.dart';
+import 'package:navitask/features/login_screen/view/login_screen.dart';
 import '../../components/custom_widgets/dialog_and_toast/custom_snackbar.dart';
 
 class SplashScreen extends StatefulWidget {
