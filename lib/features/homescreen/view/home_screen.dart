@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navitask/features/Resgistration/view/refistration_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -29,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Search Bar
+            // 🔍 Search Bar
             Row(
               children: [
                 Expanded(
@@ -54,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 45,
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   decoration: BoxDecoration(
-                    color: Colors.green,
+                    color: Color(0xFF006837),
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: const Center(
@@ -69,21 +70,22 @@ class _HomeScreenState extends State<HomeScreen> {
 
             const SizedBox(height: 16),
 
-            // Sort By
+            // 🔽 Sort By Row
             Row(
               children: [
                 const Text(
                   "Sort by : ",
                   style: TextStyle(fontSize: 14, color: Colors.black),
                 ),
+                const Spacer(),
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 12,
-                    vertical: 4,
+                    vertical: 6,
                   ),
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey.shade400),
-                    borderRadius: BorderRadius.circular(6),
+                    borderRadius: BorderRadius.circular(20), // pill style
                   ),
                   child: Row(
                     children: const [
@@ -97,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
             const SizedBox(height: 16),
 
-            // List of bookings
+            // 📋 Booking List (only cards)
             Expanded(
               child: ListView(
                 children: [
@@ -121,25 +123,53 @@ class _HomeScreenState extends State<HomeScreen> {
                     package: "Couple Combo Package (Rejuven...",
                     date: "31/01/2024",
                     by: "Jithesh",
-                    showRegister: true,
                   ),
-                  lastBooking(),
                 ],
               ),
             ),
+
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        const RefistrationScreen(), // replace with your screen
+                  ),
+                );
+              },
+              child: Container(
+                width: double.infinity,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: Color(0xFF006837),
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: const Center(
+                  child: Text(
+                    "Register Now",
+                    style: TextStyle(color: Colors.white, fontSize: 14),
+                  ),
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 12),
+
+            lastBooking(),
           ],
         ),
       ),
     );
   }
 
+  // 📌 Booking Card
   Widget bookingCard({
     required String index,
     required String name,
     required String package,
     required String date,
     required String by,
-    bool showRegister = false,
   }) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -163,7 +193,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Text(
             package,
             style: const TextStyle(
-              color: Colors.green,
+              color: Color(0xFF006837),
               fontSize: 14,
               fontWeight: FontWeight.w500,
             ),
@@ -185,41 +215,26 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           const SizedBox(height: 6),
-          if (showRegister)
-            Container(
-              width: double.infinity,
-              height: 35,
-              decoration: BoxDecoration(
-                color: Colors.green,
-                borderRadius: BorderRadius.circular(6),
-              ),
-              child: const Center(
-                child: Text(
-                  "Register Now",
-                  style: TextStyle(color: Colors.white, fontSize: 14),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              Text(
+                "View Booking details",
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.black54,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
-            )
-          else
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
-                  "View Booking details",
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black54,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                Icon(Icons.chevron_right, color: Colors.green),
-              ],
-            ),
+              Icon(Icons.chevron_right, color: Color(0xFF006837)),
+            ],
+          ),
         ],
       ),
     );
   }
 
+  // 📌 Last Booking (only date & by)
   Widget lastBooking() {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -253,7 +268,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              Icon(Icons.chevron_right, color: Colors.green),
+              Icon(Icons.chevron_right, color: Color(0xFF006837)),
             ],
           ),
         ],
